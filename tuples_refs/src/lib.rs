@@ -1,3 +1,5 @@
+#[derive(Debug)]
+#[derive(PartialEq)]
 pub struct Student(pub i32, pub String, pub String);
 pub fn id(student: &Student) -> i32 {
     let tup = student;
