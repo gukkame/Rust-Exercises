@@ -12,7 +12,6 @@ pub fn initials(names: Vec<&str>) -> Vec<String> {
         str.pop();
         vec.push(str);
     }
-    println!("AAA{:?}", vec);
     vec
 }
 
