@@ -37,11 +37,7 @@ pub fn split_at(v: &str, index: usize) -> (&str, &str) {
 }
 
 pub fn find(v: &str, pat: char) -> usize {
-    if let Some(m) = v.to_string().find(pat) {
-       m
-    }else{
-       0
-    }
+   v.to_string().find(pat).unwrap()
 }
 
 #[cfg(test)]
