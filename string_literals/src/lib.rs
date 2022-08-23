@@ -1,32 +1,35 @@
 pub fn is_empty(v: &str) -> bool {
-    if &v.len().to_string() == "0" {
-        true
-    } else {
-        false
-    }
+    v.is_empty()
+    // if &v.len().to_string() == "0" {
+    //     true
+    // } else {
+    //     false
+    // }
 }
 
 pub fn is_ascii(v: &str) -> bool {
-    let mut flag = true;
-    for ch in v.chars() {
-        let ascii = ch as char as u8;
-        if ascii > 31 && ascii < 128 {
-            flag = true;
-        } else {
-            flag = false;
-            break;
-        }
-    }
-    flag
+    v.is_ascii()
+    // let mut flag = true;
+    // for ch in v.chars() {
+    //     let ascii = ch as char as u8;
+    //     if ascii > 31 && ascii < 128 {
+    //         flag = true;
+    //     } else {
+    //         flag = false;
+    //         break;
+    //     }
+    // }
+    // flag
 }
 
 pub fn contains(v: &str, pat: &str) -> bool {
-    let vec: Vec<&str> = v.split(pat).collect();
-    if vec.len() == 1 {
-        false
-    } else {
-        true
-    }
+    v.contains(pat)
+    // let vec: Vec<&str> = v.split(pat).collect();
+    // if vec.len() == 1 {
+    //     false
+    // } else {
+    //     true
+    // }
 }
 
 pub fn split_at(v: &str, index: usize) -> (&str, &str) {
