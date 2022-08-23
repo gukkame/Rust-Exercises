@@ -1,14 +1,18 @@
 pub fn initials(names: Vec<&str>) -> Vec<String> {
     let mut vec = Vec::new();
     for string in names {
-        let mut str: String = "".to_owned();
+        let mut str = String::new();
         for ch in string.chars() {
             if ch.is_uppercase() {
-                str.push_str((ch.to_string() + ". ").as_str()); 
+                str.push(ch);
+                str.push('.'); 
+                str.push(' '); 
             }
         }
-        vec.push(str.trim_end_matches(' ').to_string());
+        str.pop();
+        vec.push(str);
     }
+    println!("AAA{:?}", vec);
     vec
 }
 
