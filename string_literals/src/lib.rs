@@ -1,0 +1,62 @@
+pub fn is_empty(v: &str) -> bool {
+    if &v.len().to_string() == "0" {
+        true
+    } else {
+        false
+    }
+}
+
+pub fn is_ascii(v: &str) -> bool {
+    let mut flag = true;
+    for ch in v.chars() {
+        let ascii = ch as char as u8;
+        if ascii > 31 && ascii < 128 {
+            flag = true;
+        } else {
+            flag = false;
+            break;
+        }
+    }
+    flag
+}
+
+pub fn contains(v: &str, pat: &str) -> bool {
+    let vec: Vec<&str> = v.split(pat).collect();
+    if vec.len() == 1 {
+        false
+    } else {
+        true
+    }
+}
+
+pub fn split_at(v: &str, index: usize) -> (&str, &str) {
+    let (split1, split2) = v.split_at(index);
+    return (split1, split2);
+}
+
+pub fn find(v: &str, pat: char) -> usize {
+    let index = v.to_string().find(pat);
+    if let Some(m) = index {
+       m
+    }else{
+       0
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_functions() {
+        assert!(is_empty(""));
+        assert!(!is_empty("something"));
+        assert!(is_ascii("rust"));
+        assert!(!is_ascii("rust¬"));
+        assert!(contains("rust", "ru"));
+        assert!(!contains("something", "mer"));
+        assert_eq!(split_at("rust", 2), ("ru", "st"));
+        assert_eq!(find("ru-st-e", '-'), 2);
+        assert_eq!(find("ru-st-e", 'e'), 6);
+    }
+}
