@@ -16,7 +16,7 @@ pub fn vec_function(b: Vec<i32>) -> (Vec<i32>, Vec<f64>) {
     let mut vec = Vec::new();
     let mut orig = Vec::new();
     for num in b {
-        let log = (num as f64).ln();
+        let log = (num as f64).abs().ln();
         vec.push(log);
         orig.push(num);
     }
@@ -25,5 +25,5 @@ pub fn vec_function(b: Vec<i32>) -> (Vec<i32>, Vec<f64>) {
 
 pub fn nbr_function(c: i32) -> (i32, f64, f64) {
     let result = (c as f64).exp();
-    return (c, result, (c as f64).ln());
+    return (c, result, (c as f64).abs().ln());
 }
