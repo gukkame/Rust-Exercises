@@ -8,15 +8,14 @@ pub fn tic_tac_toe(table: Vec<Vec<&str>>) -> String {
     let h1 = horizontal("X", &table);
     let v1 = vertical("X", &table);
 
-	println!("Row {:?}", d);
-	println!("Row {:?}", h);
-	println!("Row {:?}", v);
-	println!("Row {:?}", d1);
-	println!("Row {:?}",h1);
-	println!("Row {:?}", v1);
-	println!("Table {:?}", table);
-	println!();
-
+    println!("DioO {:?}", d);
+    println!("RowO {:?}", h);
+    println!("VerO {:?}", v);
+    println!("DioX {:?}", d1);
+    println!("RowX {:?}", h1);
+    println!("VerX {:?}", v1);
+    println!("Table {:?}", table);
+    println!();
 
     if d == true || h == true || v == true {
         "player O won".to_string()
@@ -39,12 +38,11 @@ pub fn diagonals(player: &str, table: &Vec<Vec<&str>>) -> bool {
         let second = row.clone().into_iter().nth(row.len() - i - 1).unwrap();
         if second == player {
             points2 += 1;
-			
         }
     }
-    if points1 == 3 || points2 == 3 || points1 == 4 || points2 == 4 {
+    if points1 == table.len() || points2 == table.len() {
         return true;
-    } 
+    }
     false
 }
 // recieves player symbol, table and i need to send beck tru if won and false if lost
@@ -73,7 +71,7 @@ pub fn vertical(player: &str, table: &Vec<Vec<&str>>) -> bool {
             points += 1;
         }
     }
-    if points == 3 {
+    if points == table.len() {
         return true;
     }
     points = 0;
@@ -83,7 +81,8 @@ pub fn vertical(player: &str, table: &Vec<Vec<&str>>) -> bool {
             points += 1;
         }
     }
-    if points == 3 {
+    println!("Table len {} and {}", table.len(), points);
+    if points == table.len() {
         return true;
     }
     points = 0;
@@ -93,7 +92,7 @@ pub fn vertical(player: &str, table: &Vec<Vec<&str>>) -> bool {
             points += 1;
         }
     }
-    if points == 3 {
+    if points == table.len() {
         return true;
     }
 
