@@ -33,13 +33,11 @@ pub fn contains(v: &str, pat: &str) -> bool {
 }
 
 pub fn split_at(v: &str, index: usize) -> (&str, &str) {
-    let (split1, split2) = v.split_at(index);
-    return (split1, split2);
+    v.split_at(index)
 }
 
 pub fn find(v: &str, pat: char) -> usize {
-    let index = v.to_string().find(pat);
-    if let Some(m) = index {
+    if let Some(m) = v.to_string().find(pat) {
        m
     }else{
        0
