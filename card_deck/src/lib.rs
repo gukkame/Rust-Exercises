@@ -1,5 +1,3 @@
-use std::{ptr::eq};
-
 use rand::Rng;
 #[derive(Debug)]
 pub enum Suit {
@@ -82,7 +80,7 @@ pub struct Card {
     pub rank: Rank,
 }
 
-pub fn winner_card(car: Card) -> bool {
+pub fn winner_card(car: &Card) -> bool {
     
     if matches!(car.rank, Rank::Ace) &&  matches!(car.suit, Suit::Spade) {
         true
