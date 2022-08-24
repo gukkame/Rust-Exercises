@@ -1,12 +1,12 @@
 use rand::Rng;
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum Suit {
     Heart,
     Diamond,
     Spade,
     Club,
 }
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum Rank {
     Ace,
     King,
@@ -74,7 +74,7 @@ impl Rank {
         }
     }
 }
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct Card {
     pub suit: Suit,
     pub rank: Rank,
@@ -82,10 +82,49 @@ pub struct Card {
 
 pub fn winner_card(car: &Card) -> bool {
     
-    if matches!(car.rank, Rank::Ace) &&  matches!(car.suit, Suit::Spade) {
-        true
+    if car.suit == Suit::Spade && car.rank == Rank::Ace {
+        return true
     } else {
-        false
+        return false
     }
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use card_deck::{self, Card, Rank, Suit};
+
+    #[allow(dead_code)]
+    fn main() {
+        let your_card = Card {
+            rank: Rank::random(),
+            suit: Suit::random(),
+        };
+        println!("You're card is {:?}", your_card);
+        // Now if the card is an Ace of Spades print "You are the winner"
+        if card_deck::winner_card(your_card) {
+            println!("You are the winner!");
+        }
+    }
+    
+    #[test]
+    fn test_winner() {
+        let winner = Card {
+            rank: Rank::Ace,
+            suit: Suit::Spade,
+        };
+        for rank in 1..14 {
+            for suit in 1..5 {
+                let card = Card {
+                    rank: Rank::translate(rank),
+                    suit: Suit::translate(suit),
+                };
+                if card != winner {
+                    assert!(!card_deck::winner_card(card));
+                } else {
+                    assert!(card_deck::winner_card(card));
+                }
+            }
+        }
+    }
+}
