@@ -1,8 +1,9 @@
+#[derive(Debug)]
 pub struct Circle {
     pub center: Point,
     pub radius: f64,
 }
-
+#[derive(Debug)]
 pub struct Point {
     pub x: f64,
     pub y: f64,
