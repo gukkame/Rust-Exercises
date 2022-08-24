@@ -33,7 +33,7 @@ impl Suit {
             1 => Suit::Heart,
             2 => Suit::Diamond,
             3 => Suit::Spade,
-            4 => Suit::Club,
+            _ => Suit::Club,
         }
     }
 }
@@ -72,7 +72,7 @@ impl Rank {
             10 => Rank::Number(10),
             11 => Rank::Jack,
             12 => Rank::Queen,
-            13 => Rank::King,
+            _ => Rank::King,
         }
     }
 }
