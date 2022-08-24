@@ -10,28 +10,28 @@ pub struct Point {
 
 // Point
 impl Point {
-    fn distance(&self, p2: &Point) -> f64 {
+    pub fn distance(&self, p2: &Point) -> f64 {
         f64::sqrt((p2.x - self.x).powf(2.0) + (p2.y - self.y).powf(2.0))
     }
 }
 // Circle
 impl Circle {
-    fn new(x: f64, y: f64, radius: f64) -> Circle {
+    pub fn new(x: f64, y: f64, radius: f64) -> Circle {
         Circle {
             center: Point { x: x, y: y },
             radius: radius,
         }
     }
 
-    fn diameter(&self) -> f64 {
+    pub fn diameter(&self) -> f64 {
         self.radius * 2.0
     }
 
-    fn area(&self) -> f64 {
+    pub fn area(&self) -> f64 {
         std::f64::consts::PI * (self.radius * self.radius)
     }
 
-    fn intersect(self, other: &Circle) -> bool {
+    pub fn intersect(self, other: &Circle) -> bool {
         if (self.radius + other.radius) > self.center.distance(&other.center) {
             return true;
         } else {
