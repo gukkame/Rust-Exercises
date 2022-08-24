@@ -17,8 +17,8 @@ pub fn median(list: &Vec<i32>) -> i32 {
         n = list2[val];
     }else{
         val = list2.len() / 2;
-        val = val + val;
         n = list2[val];
+        n += list2[val+1];
     }
     n
 }
