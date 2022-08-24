@@ -17,8 +17,8 @@ pub fn median(list: &Vec<i32>) -> i32 {
         n = list2[val];
     }else{
         val = list2.len() / 2;
-        n = list2[val];
-        n += list2[val+1];
+        n += list2[val];
+        n += list2[val-1];
         n /= 2;
     }
     n
@@ -62,8 +62,8 @@ mod tests {
     }
     #[test]
     fn test_median() {
-        let v = vec![4, 7, 5, 2, 5, 1, 3];
-        assert_eq!(median(&v), 4);
+        let v = vec![2, 1, 5, 2, 7, 4];
+        assert_eq!(median(&v), 3);
     }
     #[test]
     fn test_mode() {
