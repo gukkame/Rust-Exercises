@@ -83,11 +83,8 @@ pub struct Card {
 }
 
 pub fn winner_card(car: Card) -> bool {
-    let winner = Card {
-        rank: Rank::Ace,
-        suit: Suit::Spade,
-    };
-    if eq(&car.rank, &winner.rank) && eq(&car.suit, &winner.suit) {
+    
+    if matches!(car.rank, Rank::Ace) &&  matches!(car.suit, Suit::Spade) {
         true
     } else {
         false
