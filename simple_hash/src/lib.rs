@@ -9,13 +9,4 @@ pub fn remove(h: &mut HashMap<&str, i32>, s: &str) {
     h.remove(s);
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}

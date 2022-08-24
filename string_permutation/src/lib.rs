@@ -1,14 +1,10 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+pub fn is_permutation(s1: &str, s2: &str) -> bool {
+    let vec = s1.as_bytes();
+    let vec2 = s2.as_bytes();
+    if vec == vec2 {
+        true
+    } else {
+        false
     }
 }
+
