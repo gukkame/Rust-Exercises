@@ -5,15 +5,15 @@ pub struct One {
 }
 #[derive(Clone, Copy)]
 pub struct Two {
-    second_layer:Option<Three>
+    pub second_layer:Option<Three>
 }
 #[derive(Clone, Copy)]
 pub struct Three {
-    third_layer: Option<Four>
+    pub third_layer: Option<Four>
 }
 #[derive(Clone, Copy)]
 pub struct Four {
-    fourth_layer:Option<u16>
+   pub fourth_layer:Option<u16>
 }
 
 impl One {
