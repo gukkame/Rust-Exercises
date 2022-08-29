@@ -6,7 +6,7 @@ pub fn open_file(s: &str) -> File {
 
     let file = match file_result {
         Ok(file) => file,
-        Err(error) => panic!("Problem opening the file: {:?}", error),
+        Err(_error) => panic!("File not found"),
     };
     file
     
