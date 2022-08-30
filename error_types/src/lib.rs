@@ -57,11 +57,14 @@ impl Form {
         let mut vec: Vec<&str> = Vec::<&str>::new();
         let f_n = self.first_name.to_string();
         let pass = self.password.to_string();
-        
+        let date = Utc::now().format("%Y-%m-%d %H:%M:%S").to_string();
+
+
+
         if self.first_name == "" {
             Err(FErr {
                 form_values: ("first_name".to_string(), f_n),
-                date: self.birth.to_string(),
+                date: date,
                 err: "No user name".to_string(),
             })
         } else if self.password.len() >= 8 {
@@ -83,7 +86,7 @@ impl Form {
                 || (has_number == true && has_letters == true && has_none_alphanumeric == false)
                 || (has_number == false && has_letters == true && has_none_alphanumeric == true)
             {
-                Err(FErr { form_values : ("password".to_string(), pass), date: self.birth.to_string(), err: "Combination of different ASCII character types (numbers, letters and none alphanumeric characters)".to_string() })
+                Err(FErr { form_values : ("password".to_string(), pass), date: date, err: "Combination of different ASCII character types (numbers, letters and none alphanumeric characters)".to_string() })
             } else {
                 vec.push("Valid first name");
                 vec.push("Valid password");
@@ -93,7 +96,7 @@ impl Form {
         } else {
             Err(FErr {
                 form_values: ("password".to_string(), pass),
-                date: self.birth.to_string(),
+                date: date,
                 err: "At least 8 characters".to_string(),
             })
         }
