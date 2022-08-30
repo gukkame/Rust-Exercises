@@ -1,16 +1,14 @@
-use chrono::{TimeZone, Utc,  Datelike, NaiveDate};
-
-
-pub fn middle_day(year: i32) -> Option<String> {
-    let days = ndays_in_year(year);
-    let md = days / 2 + 1;
-    if md == 366 {
-        return None;
-    }
-    let wd = Utc.yo(year, md).to_string();
-    return Some(wd);
+pub use chrono::*;
+pub use chrono::{Weekday as wd, DateTime, offset::Utc};
+fn main() {
+    println!("{:?}", middle_day(1022).unwrap());
 }
-fn ndays_in_year(year: i32) -> u32 {
-    let d = NaiveDate::from_ymd(year + 1, 1, 1);
-    d.pred().ordinal()
+
+pub fn middle_day(year: i32) -> Option<wd> {
+    if year % 4 == 0 {
+        return None;
+    } else {
+        let day = Utc.yo(year, 183).weekday();
+        return Some(day);
+    }
 }
