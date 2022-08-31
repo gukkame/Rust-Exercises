@@ -76,22 +76,4 @@ pub fn edit_distance(a: &str, b: &str) -> usize {
 
     result
 }
-fn main() {
-    println!(
-        "{:?}",
-        expected_variable("something", "something_completely_different")
-    );
-    println!(
-        "{} close to it",
-        expected_variable("soClose", "So_Close").unwrap()
-    );
-    println!(
-        "{} close to it",
-        expected_variable("On_Point", "on_point").unwrap()
-    );
 
-    println!(
-        "{} close to it",
-        expected_variable("BenedictCumberbatch", "BeneficialCucumbersnatch").unwrap()
-    );
-}
