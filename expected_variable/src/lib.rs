@@ -8,6 +8,10 @@ pub fn expected_variable(orig: &str, exp: &str) -> Option<String> {
         return None;
     }
     let size = edit_distance(orig.to_lowercase().as_str(), exp.to_lowercase().as_str());
+    let min = exp.len() as f64;
+    if min <= size as f64 {
+        return None;
+    }
     let res: f64 = 100.0 - (size as f64 * 100.0 / exp.len() as f64);
     let mut str_res = (res.round() as i16).to_string();
     str_res.push_str("%");
