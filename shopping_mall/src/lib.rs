@@ -1,6 +1,5 @@
-use crate::mall::floor::{self};
 use crate::mall::guard::Guard;
-use crate::{employee::Employee, mall::floor::store};
+use crate::{employee::Employee};
 use mall::{
     floor::store::{employee, Store},
     Mall,
@@ -50,16 +49,16 @@ pub fn highest_paid_employee(mall: Mall) -> Vec<Employee> {
     employees1
 }
 pub fn nbr_of_employees(mall: Mall) -> usize {
-    let mut all_Empl = 0;
+    let mut all_empl = 0;
 
     for floor in mall.floors {
         for store in floor.stores {
-            all_Empl += store.employees.len();
+            all_empl += store.employees.len();
         }
     }
-    all_Empl += mall.guards.len();
+    all_empl += mall.guards.len();
 
-    all_Empl
+    all_empl
 }
 pub fn fire_old_securities(mall: &mut Mall) -> Mall {
     let mut mall1 = mall.clone();
