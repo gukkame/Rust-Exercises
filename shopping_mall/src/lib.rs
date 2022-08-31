@@ -58,7 +58,7 @@ pub fn nbr_of_employees(mall: Mall) -> usize {
             all_empl += store.employees.len();
         }
     }
-    all_empl += mall.guards.len();
+    all_empl += mall.guards.len()+1;
 
     all_empl
 }
