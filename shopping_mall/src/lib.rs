@@ -48,9 +48,6 @@ pub fn highest_paid_employee(mall: Mall) -> Vec<Employee> {
         }
     }
     employees1
-    // for empl in store.employees {
-
-    // }
 }
 pub fn nbr_of_employees(mall: Mall) -> usize {
     let mut all_Empl = 0;
@@ -118,4 +115,3 @@ pub fn cut_or_raise(mall: &mut Mall) -> Mall {
     }
     mall_edit
 }
-
