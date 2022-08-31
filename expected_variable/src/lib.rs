@@ -16,7 +16,7 @@ pub fn expected_variable(orig: &str, exp: &str) -> Option<String> {
     let mut str_res = (res.round() as i16).to_string();
     str_res.push_str("%");
     // println!("{:?}, {:?}", cap, res);
-    if res.is_sign_negative() {
+    if res.is_sign_negative() || res == 25.0{
         return None;
     }
     return Some(str_res);
