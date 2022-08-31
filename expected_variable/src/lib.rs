@@ -2,7 +2,7 @@ extern crate case;
 pub fn expected_variable(orig: &str, exp: &str) -> Option<String> {
     let mut cap = false;
     let mut line = false;
-    if orig == "" || exp == "" {
+    if orig.is_empty() || exp.is_empty() {
         return None
     }
     for ch in orig.chars() {
@@ -20,9 +20,9 @@ pub fn expected_variable(orig: &str, exp: &str) -> Option<String> {
         let res: f64 = 100.0-(size as f64 * 100.0 / exp.len() as f64);
         let mut str_res =(res.round() as i16).to_string();
         str_res.push('%');
-        Some(str_res)
+        return Some(str_res)
     } else {
-        None
+       return None
     }
 }
 pub fn edit_distance(a: &str, b: &str) -> usize {
