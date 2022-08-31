@@ -1,11 +1,11 @@
 pub mod mall;
-pub use mall::*;
-use mall::floor::store::Store;
-use mall::floor::store::employee::Employee;
+pub use crate::guard::Guard;
 pub use crate::mall::floor;
 pub use crate::mall::floor::store;
 pub use crate::mall::Mall;
-pub use crate::guard::Guard;
+use mall::floor::store::employee::Employee;
+use mall::floor::store::Store;
+pub use mall::*;
 
 pub fn biggest_store(mall: Mall) -> Store {
     let mut name = "".to_string();
@@ -30,6 +30,7 @@ pub fn biggest_store(mall: Mall) -> Store {
 pub fn highest_paid_employee(mall: Mall) -> Vec<Employee> {
     let mut salary = 0.0;
     let mut employees1 = vec![Employee::new("", 0, 0, 0, 0.0)];
+    employees1.pop();
     for floor in mall.floors {
         for store in floor.stores {
             for empl in store.employees {
