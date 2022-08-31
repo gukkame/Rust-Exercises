@@ -26,6 +26,9 @@ pub fn expected_variable(orig: &str, exp: &str) -> Option<String> {
         let res: f64 = 100.0-(size as f64 * 100.0 / exp.len() as f64);
         let mut str_res =(res.round() as i16).to_string();
         str_res.push_str("%");
+        if res.is_sign_negative() {
+            return None
+        }
        return Some(str_res)
     } else {
        return None
@@ -87,36 +90,3 @@ pub fn edit_distance(a: &str, b: &str) -> usize {
 }
 
 
-#[cfg(test)]
-mod test {
-    use super::*;
-
-    #[test]
-    fn expected_variable_test() {
-        assert_eq!(
-            None,
-            expected_variable("On_Point", "on_point")
-        );
-    }
-    #[test]
-    fn expected_variable_test2() {
-        assert_eq!(
-            Some("88% close to it".to_string()),
-            expected_variable("soClose", "So_Close")
-        );
-    }
-    #[test]
-    fn expected_variable_test3() {
-        assert_eq!(
-            None,
-            expected_variable("something", "something_completely_different")
-        );
-    }
-    #[test]
-    fn expected_variable_test4() {
-        assert_eq!(
-            Some("67% close to it".to_string()),
-            expected_variable("BenedictCumberbatch", "BeneficialCucumbersnatch")
-        );
-    }
-}
