@@ -1,39 +1,46 @@
 extern crate case;
 pub fn expected_variable(orig: &str, exp: &str) -> Option<String> {
-    let mut cap = false;
-    let mut line = false;
-    if orig.is_empty() {
-        // println!("Empty");
-      return None
+    if (!is_camel_case(orig) && !is_snake_case(orig))
+        || (!is_camel_case(exp) && !is_snake_case(exp))
+        || orig == ""
+        || exp == ""
+    {
+        return None;
     }
-    if exp.is_empty() {
-        // println!("2Empty");
-      return None
+    let size = edit_distance(orig.to_lowercase().as_str(), exp.to_lowercase().as_str());
+    let res: f64 = 100.0 - (size as f64 * 100.0 / exp.len() as f64);
+    let mut str_res = (res.round() as i16).to_string();
+    str_res.push_str("%");
+    // println!("{:?}, {:?}", cap, res);
+    if res.is_sign_negative() {
+        return None;
     }
-    for ch in orig.chars() {
-        if ch == '_' {
-            line = true;
-            break;
-        }
-        if ch.is_ascii_uppercase() {
-            cap = true;
-            break;
-        }
-    }
-    if cap == true || line == true {
-        let size = edit_distance(orig.to_lowercase().as_str(), exp.to_lowercase().as_str());
-        let res: f64 = 100.0-(size as f64 * 100.0 / exp.len() as f64);
-        let mut str_res =(res.round() as i16).to_string();
-        str_res.push_str("%");
-        // println!("{:?}, {:?}", cap, res);
-        if res.is_sign_negative(){
-            return None
-        }
-       return Some(str_res)
-    } else {
-       return None
-    }
+    return Some(str_res);
 }
+
+pub fn is_camel_case(input: &str) -> bool {
+    if !base_test(input) {
+        return false;
+    }
+    let mut orig = true;
+    for letter in input.chars() {
+        if !orig && letter.is_uppercase() {
+            return true;
+        }
+        orig = false;
+    }
+    return false;
+}
+pub fn is_snake_case(input: &str) -> bool {
+    if !base_test(input) {
+        return false;
+    }
+    input.split("_").collect::<String>().len() > 1
+}
+pub fn base_test(input: &str) -> bool {
+    !(input.contains(" ") || input.contains("\n") || input.contains("-"))
+}
+
 pub fn edit_distance(a: &str, b: &str) -> usize {
     let mut result = 0;
 
@@ -94,10 +101,7 @@ mod test {
 
     #[test]
     fn expected_variable_test() {
-        assert_eq!(
-            None,
-            expected_variable("On_Point", "on_point")
-        );
+        assert_eq!(None, expected_variable("On_Point", "on_point"));
     }
     #[test]
     fn expected_variable_test2() {
@@ -121,4 +125,3 @@ mod test {
         );
     }
 }
-
