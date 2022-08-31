@@ -2,6 +2,9 @@ extern crate case;
 pub fn expected_variable(orig: &str, exp: &str) -> Option<String> {
     let mut cap = false;
     let mut line = false;
+    if orig == "" || exp == "" {
+        return None
+    }
     for ch in orig.chars() {
         if ch == '_' {
             line = true;
