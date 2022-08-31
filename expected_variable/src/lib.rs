@@ -3,11 +3,11 @@ pub fn expected_variable(orig: &str, exp: &str) -> Option<String> {
     let mut cap = false;
     let mut line = false;
     if orig.is_empty() {
-        println!("Empty");
+        // println!("Empty");
       return None
     }
     if exp.is_empty() {
-        println!("2Empty");
+        // println!("2Empty");
       return None
     }
     for ch in orig.chars() {
@@ -20,15 +20,12 @@ pub fn expected_variable(orig: &str, exp: &str) -> Option<String> {
             break;
         }
     }
-    println!("{:?}, {:?}", cap, line);
+    // println!("{:?}, {:?}", cap, line);
     if cap == true || line == true {
         let size = edit_distance(orig.to_lowercase().as_str(), exp.to_lowercase().as_str());
         let res: f64 = 100.0-(size as f64 * 100.0 / exp.len() as f64);
         let mut str_res =(res.round() as i16).to_string();
-        if res == 100.0 {
-            return None
-        }
-        str_res.push_str("% close to it");
+        str_res.push_str("%");
        return Some(str_res)
     } else {
        return None
