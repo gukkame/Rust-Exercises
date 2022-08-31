@@ -1,10 +1,11 @@
-use crate::mall::guard::Guard;
-use crate::{employee::Employee};
-use mall::{
-    floor::store::{employee, Store},
-    Mall,
-};
-mod mall;
+pub mod mall;
+pub use mall::*;
+use mall::floor::store::Store;
+use mall::floor::store::employee::Employee;
+pub use crate::mall::floor;
+pub use crate::mall::floor::store;
+pub use crate::mall::Mall;
+pub use crate::guard::Guard;
 
 pub fn biggest_store(mall: Mall) -> Store {
     let mut name = "".to_string();
