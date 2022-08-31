@@ -97,6 +97,8 @@ pub fn check_for_securities(mall: &mut Mall, guards: Vec<Guard>) -> Mall {
                 numb -= 1;
             }
         }
+    }else{
+        mall_edit.guards.pop();  
     }
 
     mall_edit
