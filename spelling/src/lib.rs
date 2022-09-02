@@ -1,7 +1,5 @@
 pub fn spell(n: u64) -> String {
-    // let rev_nbr = n.to_string().chars().rev().collect::<String>();
     let mut str = String::new();
-
     if n < 100 {
         str = two_dig_num(n);
     } else if n > 99 && n < 1000 {
@@ -11,23 +9,19 @@ pub fn spell(n: u64) -> String {
     }else if n == 1000000{
         str = "one million".to_string();
     }
-    println!("String {}, {}", n, str);
     str
 }
 pub fn thousands(n: u64) -> String {
     let mut str = String::new();
     let num_len = n.to_string().len();
-    println!("Number : {}", n);
     if num_len == 4 {
         let st = n.to_string().chars().nth(0).unwrap().to_digit(10).unwrap();
         str.push_str(ones(st).as_str());
     } else if num_len == 5 {
         let len = n / 1000;
-        println!("5 dig number to first 2 dig: {}", len);
         str.push_str(two_dig_num(len).as_str());
     } else if num_len == 6 {
         let len = n / 1000;
-        println!("6 dig number to first 3 dig: {}", len);
         str.push_str(three_dig_num(len).as_str());
     }
     str.push_str(" thousand");
