@@ -72,7 +72,7 @@ fn main() {
     //returns the list with the highest paid employees
     println!("{:?}", highest_paid_employee(mall_la_vie.clone()));
     // //returns the number of employees
-    // println!("{:?}", nbr_of_employees(mall_la_vie.clone()));
+    println!("{:?}", nbr_of_employees(mall_la_vie.clone()));
     // //fires old guards
     // fire_old_securities(&mut mall_la_vie);
     // //checks if it is needed to add guards

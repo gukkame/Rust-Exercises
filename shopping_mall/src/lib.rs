@@ -87,18 +87,17 @@ pub fn check_for_securities(mall: &mut Mall, guards: Vec<Guard>) -> Mall {
             area += store.square_meters;
         }
     }
+    println!("AA{:?}", mall_edit.guards.len());
     let guards_rn: u64 = mall_edit.guards.len().try_into().unwrap();
     let guards_needed = area / 200;
     if guards_rn < guards_needed {
-        let mut numb = guards_needed - guards_rn;
+        let mut numb = guards_needed - guards_rn - 1;
         for one_guard in guards {
-            if numb > 0 {
+            if numb > 1 {
                 mall_edit.guards.push(one_guard);
                 numb -= 1;
             }
         }
-    }else{
-        mall_edit.guards.pop();  
     }
 
     mall_edit
