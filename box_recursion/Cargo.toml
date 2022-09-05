@@ -1,5 +1,5 @@
 [package]
-name = "box-recursion"
+name = "box_recursion"
 version = "0.1.0"
 edition = "2021"
 

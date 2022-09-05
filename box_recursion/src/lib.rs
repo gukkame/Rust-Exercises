@@ -1,9 +1,12 @@
+
+#[derive(PartialEq, Clone, Debug)]
 pub struct WorkEnvironment {
     pub grade: Link,
 }
 
 pub type Link = Option<Box<Worker>>;
-#[derive(PartialEq, Clone)]
+
+#[derive(PartialEq, Clone, Debug)]
 pub struct Worker {
     pub worker_type: String,
     pub worker_name: String,
@@ -35,7 +38,7 @@ impl WorkEnvironment {
     }
 }
 
-#[cfg(test)]+
+#[cfg(test)]
 mod tests {
     use super::*;
     #[test]
