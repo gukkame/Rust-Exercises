@@ -1,4 +1,4 @@
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct StringValue {
      pub value: String,
 }
@@ -25,9 +25,7 @@ impl AppendStr for StringValue {
     }
 
     fn remove_punctuation_marks(&mut self) -> &mut Self {
-        let res = self.value.clone();
-        let res2 = res.replace(|c: char| c.is_ascii_punctuation(), "");
-        self.value = res2;
+        self.value = self.value.replace(&[',', '.', '?', '!'], "");
         self
     }
 }
