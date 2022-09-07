@@ -1,6 +1,6 @@
 #[derive(Clone)]
-struct StringValue {
-    value: String,
+pub struct StringValue {
+    pub value: String,
 }
 
 trait AppendStr {
