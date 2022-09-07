@@ -115,7 +115,7 @@ mod tests {
     fn test_drop_same_thread() {
         // test if we drop the same thread after it was already been dropped
         let worker = Workers::new();
-        let (pid, thread) = worker.new_worker(String::from("gsd-rfkill"));
+        let (_pid, thread) = worker.new_worker(String::from("gsd-rfkill"));
         let thread_clone = thread.clone();
         thread.skill();
         thread_clone.skill();
