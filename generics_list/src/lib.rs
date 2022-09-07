@@ -47,7 +47,10 @@ impl<T> List<T> {
     }
 
     pub fn len(&self) ->  usize where T: Clone  {
-       
+        match self.head {
+            None => {return 0},
+            _ => {}
+        }
         let mut count: usize = 1;
         let mut current = self.head.as_ref().unwrap().clone();
         loop {
