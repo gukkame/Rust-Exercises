@@ -22,10 +22,8 @@ impl AppendStr for StringValue {
     fn append_number(&mut self, new_number: f64) -> &Self {
         let mut res = self.value.to_string();
         res.push_str(new_number.to_string().as_str());
-        let res2 = res.replace(|c: char| c.is_ascii_punctuation(), "");
-        println!("NUMBER: {:?}", res);
-        println!("NUMBER2: {:?}", res2);
-        self.value = res2;
+        println!("NUMBER: {:?}, {:?}", res, new_number);
+        self.value = res;
         self
     }
 
