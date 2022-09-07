@@ -6,7 +6,7 @@ pub struct StringValue {
 pub trait AppendStr {
     fn append_str(&mut self, new_str: String) -> &Self;
 
-    fn append_number(&mut self, new_number: f64) -> &Self;
+    fn append_number(&mut self, new_number: f64) -> &mut Self;
 
     fn remove_punctuation_marks(&mut self) -> &Self;
 }
@@ -19,7 +19,7 @@ impl AppendStr for StringValue {
         self
     }
 
-    fn append_number(&mut self, new_number: f64) -> &Self {
+    fn append_number(&mut self, new_number: f64) -> &mut Self {
         self.value += &new_number.to_string();
         self
     }
