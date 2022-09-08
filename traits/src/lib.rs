@@ -43,7 +43,7 @@ impl Food for Meat {
 }
 impl fmt::Display for Player {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}\nStrenght: {}, Score: {}, Money: {}\nWeapons: {:?}", self.name,self.strength, self.score, self.money,self.weapons)
+        write!(f, "{}\nStrength: {}, Score: {}, Money: {}\nWeapons: {:?}", self.name,self.strength, self.score, self.money,self.weapons)
 
     }
 }
