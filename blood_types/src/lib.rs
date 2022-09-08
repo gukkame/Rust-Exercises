@@ -225,6 +225,7 @@ impl BloodType {
         }
         return arr
 	}
+     
     
 	pub fn recipients(&self) -> Vec<BloodType> {
         let mut arr: Vec<BloodType> = Vec::new();
