@@ -1,4 +1,5 @@
 pub use lalgebra_scalar::{Scalar}; 
+mod ops;
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct Matrix<T>(pub Vec<Vec<T>>);
 
@@ -38,22 +39,26 @@ impl <T: Scalar<Item = T>> Matrix<T> {
 mod tests {
     use super::*;
 
+    
     #[test]
-    fn zero_property() {
-        let matrix: Matrix<u32> = Matrix::zero(3, 4);
-        let expected: Matrix<u32> = Matrix(vec![vec![0, 0, 0, 0], vec![0, 0, 0, 0], vec![0, 0, 0, 0]]);
-        assert_eq!(matrix, expected);
-        let matrix: Matrix<u32> = Matrix::zero(2, 2);
-        let expected: Matrix<u32> = Matrix(vec![vec![0, 0], vec![0, 0]]);
-        assert_eq!(matrix, expected);
+    fn addition() {
+        let matrix = Matrix(vec![vec![1, 1], vec![1, 1]]);
+        let matrix_2 = Matrix(vec![vec![1, 1], vec![1, 1]]);
+        let expected = Matrix(vec![vec![2, 2], vec![2, 2]]);
+        assert_eq!(matrix + matrix_2, Some(expected));
+        let matrix = Matrix(vec![vec![1, 1], vec![1, 1]]);
+        let matrix_2 = Matrix(vec![vec![1, 1, 3], vec![1, 1]]);
+        assert_eq!(matrix + matrix_2, None);
     }
     #[test]
-    fn identy_matrix() {
-        let matrix: Matrix<u32> = Matrix::identity(2);
-        let expected: Matrix<u32> = Matrix(vec![vec![1, 0], vec![0, 1]]);
-        assert_eq!(matrix, expected);
-        let matrix: Matrix<u32> = Matrix::identity(3);
-        let expected: Matrix<u32> = Matrix(vec![vec![1, 0, 0], vec![0, 1, 0], vec![0, 0, 1]]);
-        assert_eq!(matrix, expected);
+    fn subtraction() {
+        let matrix = Matrix(vec![vec![1, 1], vec![1, 1]]);
+        let matrix_2 = Matrix(vec![vec![1, 1], vec![1, 1]]);
+        let expected = Matrix(vec![vec![0, 0], vec![0, 0]]);
+        assert_eq!(matrix - matrix_2, Some(expected));
+        let matrix = Matrix(vec![vec![1, 1], vec![1, 1]]);
+        let matrix_2 = Matrix(vec![vec![1, 1, 3], vec![1, 1]]);
+        assert_eq!(matrix - matrix_2, None);
     }
+
 }
